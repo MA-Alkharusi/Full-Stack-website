@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- sources w3schools.com https://youtu.be/4fWWn2Pe2Mk -->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- W3.CSS to make a nicer shape of the inputs-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- link the css page -->
+  <link rel="stylesheet" href="index.css">
+  <!-- jQuery-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <Title>Assignment-4-21250138</Title>
+</head>
+
+<body>
+  <!--Form for inserting a new customer to the database-->
+  <div class="container"> <!-- Container for the cstomer form -->
+    <div class="row justify-content-center">
+      <form id="addNewCustomer" class="form-horizontal">
+        <fieldset>
+
+          <legend>Add A NEW Customer</legend> <!-- Form title -->
+
+
+          <label class="col-md-5 control-label" for="Title">Title</label>
+          <input id="Title" name="Title" class="form-control"
+            placeholder="Mx / Ms / Mr / Mrs / Miss / Dr / Other (Specify)" type="text" required> <!-- Title input -->
+          <br>
+          <label class="col-md-5 control-label" for="FirstName">First Name</label>
+          <input id="FirstName" name="FirstName" type="text" placeholder="First Name" class="form-control input-md"
+            required> <!-- First Name input -->
+          <br>
+          <label class="col-md-5 control-label" for="LastName">LastName</label>
+          <input id="LastName" name="LastName" type="text" placeholder="LastName" class="form-control input-md"
+            required> <!-- Last Name input -->
+          <br>
+          <label class="col-md-5 control-label" for="MobileNumber">Mobile Number</label>
+          <input id="MobileNumber" name="MobileNumber" type="text" placeholder="Mobile Number"
+            class="form-control input-md" required>
+          <br> <!-- Mobile Number input -->
+          <label class="col-md-5 control-label" for="EmailAddress">EmailAddress</label>
+          <input id="EmailAddress" name="EmailAddress" type="text" placeholder="EmailAddress"
+            class="form-control input-md" required>
+          <br> <!-- Email Address input -->
+          <label class="col-md-5 control-label" for="AddressLine1">home Address Line 1</label>
+          <input id="AddressLine1" name="AddressLine1" type="text" placeholder="home Address Line 1"
+            class="form-control input-md" required>
+          <br> <!-- home Address Line 1 input -->
+          <label class="col-md-5 control-label" for="AddressLine2">home Address Line 2</label>
+          <input id="AddressLine2" name="AddressLine2" type="text" placeholder="home Address Line 2"
+            class="form-control input-md">
+          <br> <!-- home Address Line 2 input -->
+          <label class="col-md-5 control-label" for="Town">home Town</label>
+          <input id="Town" name="Town" type="text" placeholder="home Town" class="form-control input-md" required>
+          <br> <!-- home Town input -->
+          <label class="col-md-5 control-label" for="County">home County</label>
+          <input id="County" name="County" type="text" placeholder="home County/City" class="form-control input-md"
+            required> <!-- home County input -->
+          <br>
+          <label class="col-md-5 control-label" for="Eircode">home Eircode</label>
+          <input id="Eircode" name="Eircode" type="text" placeholder="home Eircode" class="form-control input-md">
+          <br> <!-- home Eircode input -->
+          <label class="col-md-5 control-label" for="AddressLine1">shipping Address Line 1</label>
+          <input id="AddressLine1" name="AddressLine1" type="text" placeholder="shipping Address Line 1"
+            class="form-control input-md" required>
+          <br> <!-- shipping Address Line 1 input -->
+          <label class="col-md-5 control-label" for="AddressLine2">shipping Address Line 2</label>
+          <input id="AddressLine2" name="AddressLine2" type="text" placeholder="shipping Address Line 2"
+            class="form-control input-md">
+          <br> <!-- shipping Address Line 2 input -->
+          <label class="col-md-5 control-label" for="Town">shipping Town</label>
+          <input id="Town" name="Town" type="text" placeholder="shipping Town" class="form-control input-md" required>
+          <br> <!-- shipping Town input -->
+          <label class="col-md-5 control-label" for="County">shipping County</label>
+          <input id="County" name="County" type="text" placeholder="shipping County/City" class="form-control input-md"
+            required> <!-- shipping County input -->
+          <br>
+          <label class="col-md-5 control-label" for="Eircode">shipping Eircode</label>
+          <input id="Eircode" name="Eircode" type="text" placeholder="shipping Eircode" class="form-control input-md">
+          <br> <!-- shipping Eircode input -->
+          <label class="col-md-5 control-label" for="submit"></label>
+          <div class="col-md-4">
+            <button type="submit">Create</button>
+          </div><!-- Submit button -->
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <!-- searching for users by first name -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <form id="searchByFirstName" class="form-horizontal">
+        <fieldset>
+          <legend>Find Customers by First Name</legend>
+          <label class="col-md-5 control-label" for="firstNameInput">First Name:</label>
+          <div class="col-md-5">
+            <input type="text" id="firstNameInput" name="searchFirstName" class="form-control input-md"
+              placeholder="First Name" required> <!-- input First Name  -->
+          </div>
+          <label class="col-md-5 control-label" for="result">customers Information</label>
+          <!-- Displaying container for the result -->
+          <div class="col-md-5">
+            <textarea class="form-control" id="result"
+              placeholder='Retrieved Customer information displayed here'></textarea>
+          </div>
+          <label class="col-md-5 control-label" for="submit"></label>
+          <div class="col-md-5">
+            <button type="submit">Search</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+
+  <!--display all the data from the database-->
+  <div class="container">
+    <div class="row justify-content-center">
+      <form id="getAllcustomers" class="form-horizontal">
+        <fieldset>
+          <legend>Get All Customers</legend>
+
+          <label class="col-md-5 control-label" for="showUserDatabase">User Database</label>
+          <div class="col-md-5">
+            <textarea class="form-control" id="showUserDatabase"
+              placeholder='Retrieved Database displayed here'></textarea>
+          </div>
+
+          <label class="col-md-5 control-label" for="submit"></label>
+          <div class="col-md-5">
+            <button type="submit">Get Database</button>
+            <button type="button" id="toggleDataButton">Hide Data</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <!--update the customer details -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <form id="updateCustomer" class="form-horizontal">
+        <fieldset>
+          <legend>Update Customer Information</legend>
+          <label class="col-md-5 control-label" for="CID">Customer ID</label>
+          <input id="CID" name="CID" class="form-control" type="text" placeholder="Customer ID (CID)" required>
+          <br>
+          <label class="col-md-5 control-label" for="UpdateMobileNumber">Mobile Number</label>
+          <input id="UpdateMobileNumber" name="UpdateMobileNumber" type="text" placeholder="Mobile Number"
+            class="form-control input-md" required>
+          <br>
+          <label class="col-md-5 control-label" for="UpdateEmailAddress">EmailAddress</label>
+          <input id="UpdateEmailAddress" name="UpdateEmailAddress" type="text" placeholder="EmailAddress"
+            class="form-control input-md" required>
+          <br>
+          <label class="col-md-5 control-label" for="UpdateTitle">Title</label>
+          <input id="UpdateTitle" name="UpdateTitle" class="form-control"
+            placeholder="Mx / Ms / Mr / Mrs / Miss / Dr / Other (Specify)" type="text" required>
+          <br>
+          <label class="col-md-5 control-label" for="homeAddressLine1">home Address Line 1</label>
+          <input id="homeAddressLine1" name="homeAddressLine1" type="text" placeholder="home Address Line 1"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="homeAddressLine2">home Address Line 2</label>
+          <input id="homeAddressLine2" name="homeAddressLine2" type="text" placeholder="home Address Line 2"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="homeTown">home Town</label>
+          <input id="homeTown" name="homeTown" type="text" placeholder="home Town" class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="homeCounty">home County</label>
+          <input id="homeCounty" name="homeCounty" type="text" placeholder="home County/City"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="homeEircode">home Eircode</label>
+          <input id="homeEircode" name="homeEircode" type="text" placeholder="home Eircode"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="shippingAddressLine1">shipping Address Line 1</label>
+          <input id="shippingAddressLine1" name="shippingAddressLine1" type="text" placeholder="shipping Address Line 1"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="shippingAddressLine2">shipping Address Line 2</label>
+          <input id="shippingAddressLine2" name="shippingAddressLine2" type="text" placeholder="shipping Address Line 2"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="shippingTown">shipping Town</label>
+          <input id="shippingTown" name="shippingTown" type="text" placeholder="shipping Town"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="shippingCounty">shipping County</label>
+          <input id="shippingCounty" name="shippingCounty" type="text" placeholder="shipping County/City"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="shippingEircode">shipping Eircode</label>
+          <input id="Eircode" name="shippingEircode" type="text" placeholder="shipping Eircode"
+            class="form-control input-md">
+          <br>
+          <label class="col-md-5 control-label" for="submit"></label>
+          <div class="col-md-4">
+            <button type="submit">Update</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <!--delete the customer details by matching the email, mobile number and the first and last name-->
+  <div class="container">
+    <div class="row justify-content-center" class="form-horizontal">
+      <form id="deleteCustomer">
+        <fieldset>
+          <legend>Delete Customer</legend>
+          <label class="col-md-5 control-label" for="emailToDelete">Email:</label>
+          <input type="text" id="emailToDelete" name="EmailAddress" class="form-control input-md" placeholder="Email Address" required>
+          <br>
+          <label class="col-md-5 control-label" for="phoneToDelete">Phone:</label>
+          <input type="text" id="phoneToDelete" name="MobileNumber" class="form-control input-md" placeholder="Mobile Number" required>
+          <br>
+          <label class="col-md-5 control-label" for="nameToDelete">First Name:</label>
+          <input type="text" id="nameToDelete" name="FirstName" class="form-control input-md" placeholder="First Name" required>
+          <br>
+          <label class="col-md-5 control-label" for="delLastName">Last Name:</label>
+          <input type="text" id="delLastName" name="LastName" class="form-control input-md" placeholder="Last Name" required>
+          <br>
+          <label class="col-md-5 control-label" for="submit"></label>
+          <div class="col-md-4">
+            <button type="submit">Delete </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <!-- the AJAX for the previous inputs & commands -->
+  <script>
+    $(document).ready(function () {
+
+      //add new customer
+      $('#addNewCustomer').submit(function (e) {
+
+        var user = {
+          Title: $('input[name=Title]').val(),
+          FirstName: $('input[name=FirstName]').val(),
+          LastName: $('input[name=LastName]').val(),
+          MobileNumber: $('input[name=MobileNumber]').val(),
+          EmailAddress: $('input[name=EmailAddress]').val(),
+          AddressLine1: $('input[name=AddressLine1]').val(),
+          AddressLine2: $('input[name=AddressLine2]').val(),
+          Town: $('input[name=Town]').val(),
+          County: $('input[name=County]').val(),
+          Eircode: $('input[name=Eircode]').val(),
+          AddressLine1: $('input[name=AddressLine1]').val(),
+          AddressLine2: $('input[name=AddressLine2]').val(),
+          Town: $('input[name=Town]').val(),
+          County: $('input[name=County]').val(),
+          Eircode: $('input[name=Eircode]').val(),
+        };
+        $.ajax({
+          type: 'POST',
+          url: 'http://localhost:8000/api/user',
+          data: user
+        })
+        showUserModal(data);
+        e.preventDefault();
+      });
+      // update customer details using the customer ID
+      $('#updateCustomer').submit(function (e) {
+        e.preventDefault();
+        var user = {
+          CID: $('input[name=CID]').val(),
+          UpdateTitle: $('input[name=UpdateTitle]').val(),
+          UpdateMobileNumber: $('input[name=UpdateMobileNumber]').val(),
+          UpdateEmailAddress: $('input[name=UpdateEmailAddress]').val(),
+          homeAddressLine1: $('input[name=homeAddressLine1]').val(),
+          homeAddressLine2: $('input[name=homeAddressLine2]').val(),
+          homeTown: $('input[name=homeTown]').val(),
+          homeCounty: $('input[name=homeCounty]').val(),
+          homeEircode: $('input[name=homeEircode]').val(),
+          shippingAddressLine1: $('input[name=shippingAddressLine1]').val(),
+          shippingAddressLine2: $('input[name=shippingAddressLine2]').val(),
+          shippingTown: $('input[name=shippingTown]').val(),
+          shippingCounty: $('input[name=shippingCounty]').val(),
+          shippingEircode: $('input[name=shippingEircode]').val()
+        };
+        $.ajax({
+          type: 'PUT',
+          url: 'http://localhost:8000/api/user/' + user.CID,
+          data: user,
+          success: function (data) {
+            alert('Customer details updated successfully.');
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+          }
+        });
+        clearUpdateInputs(); // clear the update inputs after the update is complete
+      });
+      // clear the update inputs after the update is complete
+      function clearUpdateInputs() {
+        $('input[name=CID]').val(''),
+          $('input[name=UpdateTitle]').val(''),
+          $('input[name=UpdateMobileNumber]').val(''),
+          $('input[name=UpdateEmailAddress]').val(''),
+          $('input[name=homeAddressLine1]').val(''),
+          $('input[name=homeAddressLine2]').val(''),
+          $('input[name=homeTown]').val(''),
+          $('input[name=homeCounty]').val(''),
+          $('input[name=homeEircode]').val(''),
+          $('input[name=shippingAddressLine1]').val(''),
+          $('input[name=shippingAddressLine2]').val(''),
+          $('input[name=shippingTown]').val(''),
+          $('input[name=shippingCounty]').val(''),
+          $('input[name=shippingEircode]').val('')
+      }
+
+      // delete the customer details by matching the email, mobile number and the first and last name
+      $('#deleteCustomer').submit(function (e) {
+        e.preventDefault();
+
+        var userToDelete = {
+          EmailAddress: $('#emailToDelete').val(),
+          MobileNumber: $('#phoneToDelete').val(),
+          FirstName: $('#nameToDelete').val(),
+          LastName: $('#delLastName').val()
+        };
+
+        $.ajax({
+          url: 'http://localhost:8000/api/user',
+          type: 'DELETE',
+          dataType: 'json',
+          data: JSON.stringify(userToDelete),
+          contentType: 'application/json',
+          success: function (data) {
+            alert('User deleted successfully.');
+          },
+          error: function (xhr, status, error) {
+            alert('Error: ' + error);
+          }
+        });
+        clearDeleteInputs(); // clear the delete inputs after the delete is complete
+
+      });
+      // clear the delete inputs after the delete is complete
+      function clearDeleteInputs() {
+        $('input[name=FirstName]').val('');
+        $('input[name=LastName]').val('');
+        $('input[name=MobileNumber]').val('');
+        $('input[name=EmailAddress]').val('');
+      }
+
+      // Search users by first name
+      $('#searchByFirstName').submit(function (e) {
+        e.preventDefault();
+
+        var firstNameToSearch = $('#firstNameInput').val();
+
+        $.ajax({
+          url: 'http://localhost:8000/api/user/search',
+          type: 'GET',
+          data: { firstName: firstNameToSearch },
+          success: function (data) {
+            $('#result').val(JSON.stringify(data, null, 2)).trigger('input');
+          },
+          error: function (xhr, status, error) {
+            alert('Error: ' + error);
+          }
+        });
+        clearSearchInputs(); // clear the search inputs after the search is complete
+      });
+      // clear the search inputs after the search is complete
+      function clearSearchInputs() {
+        $('input[name=firstNameInput]').val('');
+      }
+
+      //makes the display box with the dtatbase data auto stretch
+      $("#result").on("input", function () {
+        this.style.height = (this.scrollHeight) + "px;overflow-y:hidden;";
+        this.style.height = "auto";
+        this.style.height = (this.scrollHeight) + "px";
+      });
+
+      //get the hide id button 
+      const toggleDataButton = document.getElementById('toggleDataButton');
+      const showUserDatabase = document.getElementById('showUserDatabase');
+
+      //hide and show the database data when the button is clicked
+      toggleDataButton.addEventListener('click', () => {
+        if (showUserDatabase.style.display === 'none') {
+          showUserDatabase.style.display = 'block';
+          toggleDataButton.textContent = 'Hide Data';
+        } else {
+          showUserDatabase.style.display = 'none';
+          toggleDataButton.textContent = 'Show Data';
+        }
+      });
+
+      //get all the users from the database
+      $('#getAllcustomers').submit(function (e) {
+        $.ajax({
+          type: 'GET',
+          url: 'http://localhost:8000/api/user'
+        })
+          .done(function (data) {
+            $('#showUserDatabase').val(JSON.stringify(data, null, 2)).trigger('input');
+          });
+        e.preventDefault();
+      });
+
+      //makes the display box with the dtatbase data auto stretch
+      $("#showUserDatabase").on("input", function () {
+        this.style.height = (this.scrollHeight) + "px;overflow-y:hidden;";
+        this.style.height = "auto";
+        this.style.height = (this.scrollHeight) + "px";
+      });
+
+      // show the data 
+      function showUserModal(data) {
+        $('#modalUserAddedMessage').html(data);
+        $('#modalUserAdded').show();
+      }
+    });
+  </script>
+
+
+</body>
+
+</html>
